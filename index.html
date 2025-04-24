@@ -1,59 +1,76 @@
-<!DOCTYPE >
-<html>
-  <head>
-    <title>Survey Form</title>
-    <link rel="stylesheet" type="text/css" href="styles.css" />
-  </head>
-  <body>
-    <div id="container">
-      <h1 id="title">Survey Form</h1>
-      <p id="description">This survey form is for research purpose</p>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Survey Form</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <button onclick="toggleModal()">Open Survey</button>
+
+  <div class="modal" id="surveyModal">
+    <div class="modal-content">
+      <h1>Survey Form</h1>
+      <p>This survey form is for research purposes</p>
       <form id="survey-form">
-        <fieldset>
-          <label id="name-label"
-            >Enter your name
-            <input placeholder="name" id="name" required type="text"
-          /></label>
-          <label id="email-label"
-            >Enter your email<input
-              placeholder="email"
-              id="email"
-              required
-              type="email"
-          /></label>
-          <label id="number-label"
-            >Enter your number<input
-              placeholder="number"
-              min="0"
-              max="11"
-              type="number"
-              id="number"
-          /></label>
+        <!-- Step 1 -->
+        <fieldset class="active">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" placeholder="Enter your name" required />
+
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" placeholder="Enter your email" required />
+
+          <label for="number">Age</label>
+          <input type="number" id="number" name="number" placeholder="Enter your age" min="0" max="150" />
+
+          <div class="button-group">
+            <button type="button" onclick="nextStep(1)">Next</button>
+          </div>
         </fieldset>
+
+        <!-- Step 2 -->
         <fieldset>
-          <label for="">Which option best describes your current role?
-        <select id="dropdown" name="role">
-          <option value="">Select an option</option>
-          <option value="1">Student</option>
-          <option value="2">Full-time job holder </option>
-          <option value="3">Part-time job holder</option>
-          <option value="4">Unemployed</option>
-          <option value="5">Prefer not to say</option>
-          <option value="6">Other</option>
-        </select>
-      </label>
-    </fieldset>
-    <fieldset>
-      <label for="">What is your purpose?</label>
-        <label><input value="personal" name="purpose" type="radio" class="inline" />Personal</label>
-        <label><input value="business" name="purpose" type="radio" class="inline" />Business</label>
-        <label for="">What would you prefer?</label>
-        <label><input type="checkbox" value="news" name="prefer" class="inline" />News</label>
-        <label><input type="checkbox" value="offers" name="prefer" class="inline"/>Special Offers</label>
-        <label>Any comments or suggestions?<textarea name="suggestions" placeholder="Enter your comment here..."></textarea></label>
-      </fieldset>
-        <fieldset><button id="submit" type="submit">Submit</button></fieldset>
+          <label for="dropdown">Current Role</label>
+          <select id="dropdown" name="role" required>
+            <option value="">Select an option</option>
+            <option value="1">Student</option>
+            <option value="2">Full-time job holder</option>
+            <option value="3">Part-time job holder</option>
+            <option value="4">Unemployed</option>
+            <option value="5">Prefer not to say</option>
+            <option value="6">Other</option>
+          </select>
+
+          <p>Purpose of the form:</p>
+          <label><input type="radio" name="purpose" value="personal" class="inline" /> Personal</label>
+          <label><input type="radio" name="purpose" value="business" class="inline" /> Business</label>
+
+          <div class="button-group">
+            <button type="button" onclick="nextStep(0)">Back</button>
+            <button type="button" onclick="nextStep(2)">Next</button>
+          </div>
+        </fieldset>
+
+        <!-- Step 3 -->
+        <fieldset>
+          <p>What would you like updates about?</p>
+          <label><input type="checkbox" name="prefer" value="news" class="inline" /> News</label>
+          <label><input type="checkbox" name="prefer" value="offers" class="inline" /> Special Offers</label>
+
+          <label for="suggestions">Any comments or suggestions?</label>
+          <textarea name="suggestions" placeholder="Enter your comment here..."></textarea>
+
+          <div class="button-group">
+            <button type="button" onclick="nextStep(1)">Back</button>
+            <button type="submit">Submit</button>
+          </div>
+        </fieldset>
       </form>
     </div>
-  </body>
+  </div>
+
+  <script src="script.js"></script>
+</body>
 </html>
