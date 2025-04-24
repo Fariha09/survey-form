@@ -1,0 +1,59 @@
+<!DOCTYPE >
+<html>
+  <head>
+    <title>Survey Form</title>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+  </head>
+  <body>
+    <div id="container">
+      <h1 id="title">Survey Form</h1>
+      <p id="description">This survey form is for research purpose</p>
+      <form id="survey-form">
+        <fieldset>
+          <label id="name-label"
+            >Enter your name
+            <input placeholder="name" id="name" required type="text"
+          /></label>
+          <label id="email-label"
+            >Enter your email<input
+              placeholder="email"
+              id="email"
+              required
+              type="email"
+          /></label>
+          <label id="number-label"
+            >Enter your number<input
+              placeholder="number"
+              min="0"
+              max="11"
+              type="number"
+              id="number"
+          /></label>
+        </fieldset>
+        <fieldset>
+          <label for="">Which option best describes your current role?
+        <select id="dropdown" name="role">
+          <option value="">Select an option</option>
+          <option value="1">Student</option>
+          <option value="2">Full-time job holder </option>
+          <option value="3">Part-time job holder</option>
+          <option value="4">Unemployed</option>
+          <option value="5">Prefer not to say</option>
+          <option value="6">Other</option>
+        </select>
+      </label>
+    </fieldset>
+    <fieldset>
+      <label for="">What is your purpose?</label>
+        <label><input value="personal" name="purpose" type="radio" class="inline" />Personal</label>
+        <label><input value="business" name="purpose" type="radio" class="inline" />Business</label>
+        <label for="">What would you prefer?</label>
+        <label><input type="checkbox" value="news" name="prefer" class="inline" />News</label>
+        <label><input type="checkbox" value="offers" name="prefer" class="inline"/>Special Offers</label>
+        <label>Any comments or suggestions?<textarea name="suggestions" placeholder="Enter your comment here..."></textarea></label>
+      </fieldset>
+        <fieldset><button id="submit" type="submit">Submit</button></fieldset>
+      </form>
+    </div>
+  </body>
+</html>
