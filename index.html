@@ -1,74 +1,72 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Survey Form</title>
-  <link rel="stylesheet" href="styles.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Client Onboarding Survey</title>
+  <link rel="stylesheet" href="styles.css">
 </head>
 <body>
-  <button onclick="toggleModal()">Open Survey</button>
-
-  <div class="modal" id="surveyModal">
-    <div class="modal-content">
-      <h1>Survey Form</h1>
-      <p>This survey form is for research purposes</p>
-      <form id="survey-form">
-        <!-- Step 1 -->
-        <fieldset class="active">
-          <label for="name">Name</label>
-          <input type="text" id="name" name="name" placeholder="Enter your name" required />
-
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" placeholder="Enter your email" required />
-
-          <label for="number">Age</label>
-          <input type="number" id="number" name="number" placeholder="Enter your age" min="0" max="150" />
-
-          <div class="button-group">
-            <button type="button" onclick="nextStep(1)">Next</button>
-          </div>
-        </fieldset>
-
-        <!-- Step 2 -->
+  <div class="modal">
+    <form id="clientForm" class="form-container">
+      <div class="form-step active">
         <fieldset>
-          <label for="dropdown">Current Role</label>
-          <select id="dropdown" name="role" required>
-            <option value="">Select an option</option>
-            <option value="1">Student</option>
-            <option value="2">Full-time job holder</option>
-            <option value="3">Part-time job holder</option>
-            <option value="4">Unemployed</option>
-            <option value="5">Prefer not to say</option>
-            <option value="6">Other</option>
-          </select>
-
-          <p>Purpose of the form:</p>
-          <label><input type="radio" name="purpose" value="personal" class="inline" /> Personal</label>
-          <label><input type="radio" name="purpose" value="business" class="inline" /> Business</label>
-
-          <div class="button-group">
-            <button type="button" onclick="nextStep(0)">Back</button>
-            <button type="button" onclick="nextStep(2)">Next</button>
-          </div>
+          <legend>Personal Information</legend>
+          <label>Full Name <input type="text" name="fullName" required></label>
+          <label>Email <input type="email" name="email" required></label>
+          <label>Phone <input type="tel" name="phone"></label>
+          <label>Location <input type="text" name="location"></label>
         </fieldset>
+        <div class="buttons">
+          <span></span>
+          <button type="button" onclick="nextStep()">Next</button>
+        </div>
+      </div>
 
-        <!-- Step 3 -->
+      <div class="form-step">
         <fieldset>
-          <p>What would you like updates about?</p>
-          <label><input type="checkbox" name="prefer" value="news" class="inline" /> News</label>
-          <label><input type="checkbox" name="prefer" value="offers" class="inline" /> Special Offers</label>
-
-          <label for="suggestions">Any comments or suggestions?</label>
-          <textarea name="suggestions" placeholder="Enter your comment here..."></textarea>
-
-          <div class="button-group">
-            <button type="button" onclick="nextStep(1)">Back</button>
-            <button type="submit">Submit</button>
-          </div>
+          <legend>Work Profile</legend>
+          <label>Job Title <input type="text" name="jobTitle"></label>
+          <label>Industry <input type="text" name="industry"></label>
+          <label>Experience (years) <input type="number" name="experience"></label>
+          <label>Portfolio <input type="url" name="portfolio"></label>
         </fieldset>
-      </form>
-    </div>
+        <div class="buttons">
+          <button type="button" onclick="prevStep()">Back</button>
+          <button type="button" onclick="nextStep()">Next</button>
+        </div>
+      </div>
+
+      <div class="form-step">
+        <fieldset>
+          <legend>Company Info</legend>
+          <label>Company Name <input type="text" name="company"></label>
+          <label>Website <input type="url" name="website"></label>
+          <label>Team Size <select name="teamSize">
+            <option>Solo</option><option>1-5</option><option>6-20</option><option>20+</option>
+          </select></label>
+          <label>Overview <textarea name="overview" rows="3"></textarea></label>
+        </fieldset>
+        <div class="buttons">
+          <button type="button" onclick="prevStep()">Back</button>
+          <button type="button" onclick="nextStep()">Next</button>
+        </div>
+      </div>
+
+      <div class="form-step">
+        <fieldset>
+          <legend>Project Details</legend>
+          <label>Project Description <textarea name="projectDesc"></textarea></label>
+          <label>Purpose <textarea name="purpose"></textarea></label>
+          <label>Deadline <input type="date" name="deadline"></label>
+          <label>Budget <input type="text" name="budget"></label>
+        </fieldset>
+        <div class="buttons">
+          <button type="button" onclick="prevStep()">Back</button>
+          <button type="submit">Submit</button>
+        </div>
+      </div>
+    </form>
   </div>
 
   <script src="script.js"></script>
