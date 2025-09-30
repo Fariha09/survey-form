@@ -7,15 +7,37 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <button onclick="toggleModal()">Open Survey</button>
+  <div class="container">
+    <button id="openSurveyBtn">Open Survey</button>
+  </div>
 
   <div class="modal" id="surveyModal">
     <div class="modal-content">
-      <h1>Survey Form</h1>
-      <p>This survey form is for research purposes</p>
+      <span class="close-button">&times;</span>
+      <h1>Client Onboarding</h1>
+      <p>Please complete the following steps.</p>
+
+      <div class="progress-bar">
+        <div class="step active">
+          <div class="step-icon">1</div>
+          <p>Personal</p>
+        </div>
+        <div class="step">
+          <div class="step-icon">2</div>
+          <p>Work</p>
+        </div>
+        <div class="step">
+          <div class="step-icon">3</div>
+          <p>Role</p>
+        </div>
+        <div class="step">
+          <div class="step-icon">4</div>
+          <p>Finish</p>
+        </div>
+      </div>
+
       <form id="survey-form">
-        <!-- Step 1 -->
-        <fieldset class="active">
+        <fieldset class="form-step active">
           <legend>Personal Information</legend>
           <label for="name">Full Name</label>
           <input type="text" id="name" name="name" placeholder="Enter your name" required />
@@ -23,18 +45,18 @@
           <label for="email">Email</label>
           <input type="email" id="email" name="email" placeholder="Enter your email" required />
 
-          <label for="number">Phone</label>
+          <label for="phone">Phone</label>
           <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required />
 
           <label for="address">Address</label>
-          <input type="text" id="location" name="location" placeholder="Enter your address" />
+          <input type="text" id="address" name="address" placeholder="Enter your address" />
 
           <div class="button-group">
-            <button type="button" onclick="nextStep(1)">Next</button>
+            <button type="button" class="next-btn">Next</button>
           </div>
         </fieldset>
 
-        <fieldset class="active">
+        <fieldset class="form-step">
           <legend>Work Profile</legend>
           <label for="jobTitle">Job Title</label>
           <input type="text" id="jobTitle" name="jobTitle" placeholder="What is your job title?" required />
@@ -45,48 +67,48 @@
           <label for="experience">Experience (Years)</label>
           <input type="number" id="experience" name="experience" placeholder="State your years of experience" required />
 
-          <label for="portfolio">Portfolio</label>
-          <input type="url" id="portfolio" name="portfolio" placeholder="" />
+          <label for="portfolio">Portfolio URL</label>
+          <input type="url" id="portfolio" name="portfolio" placeholder="https://example.com" />
 
           <div class="button-group">
-            <button type="button" onclick="nextStep(1)">Next</button>
+            <button type="button" class="prev-btn">Back</button>
+            <button type="button" class="next-btn">Next</button>
           </div>
         </fieldset>
 
-        <!-- Step 2 -->
-        <fieldset>
+        <fieldset class="form-step">
+          <legend>Your Role</legend>
           <label for="dropdown">Current Role</label>
           <select id="dropdown" name="role" required>
-            <option value="">Select an option</option>
-            <option value="1">Student</option>
-            <option value="2">Full-time job holder</option>
-            <option value="3">Part-time job holder</option>
-            <option value="4">Unemployed</option>
-            <option value="5">Prefer not to say</option>
-            <option value="6">Other</option>
+            <option value="" disabled selected>Select an option</option>
+            <option value="student">Student</option>
+            <option value="full-time">Full-time job holder</option>
+            <option value="part-time">Part-time job holder</option>
+            <option value="unemployed">Unemployed</option>
+            <option value="other">Other</option>
           </select>
 
-          <p>Purpose of the form:</p>
-          <label><input type="radio" name="purpose" value="personal" class="inline" /> Personal</label>
-          <label><input type="radio" name="purpose" value="business" class="inline" /> Business</label>
+          <p>Purpose for this service:</p>
+          <label class="inline-label"><input type="radio" name="purpose" value="personal" class="inline" /> Personal</label>
+          <label class="inline-label"><input type="radio" name="purpose" value="business" class="inline" /> Business</label>
 
           <div class="button-group">
-            <button type="button" onclick="nextStep(0)">Back</button>
-            <button type="button" onclick="nextStep(2)">Next</button>
+            <button type="button" class="prev-btn">Back</button>
+            <button type="button" class="next-btn">Next</button>
           </div>
         </fieldset>
 
-        <!-- Step 3 -->
-        <fieldset>
+        <fieldset class="form-step">
+          <legend>Updates & Suggestions</legend>
           <p>What would you like updates about?</p>
-          <label><input type="checkbox" name="prefer" value="news" class="inline" /> News</label>
-          <label><input type="checkbox" name="prefer" value="offers" class="inline" /> Special Offers</label>
+          <label class="inline-label"><input type="checkbox" name="prefer" value="news" class="inline" /> News</label>
+          <label class="inline-label"><input type="checkbox" name="prefer" value="offers" class="inline" /> Special Offers</label>
 
           <label for="suggestions">Any comments or suggestions?</label>
-          <textarea name="suggestions" placeholder="Enter your comment here..."></textarea>
+          <textarea id="suggestions" name="suggestions" rows="4" placeholder="Enter your comment here..."></textarea>
 
           <div class="button-group">
-            <button type="button" onclick="nextStep(1)">Back</button>
+            <button type="button" class="prev-btn">Back</button>
             <button type="submit">Submit</button>
           </div>
         </fieldset>
