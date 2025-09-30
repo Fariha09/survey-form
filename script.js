@@ -1,18 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
   const modal = document.getElementById("surveyModal");
-  const openBtn = document.getElementById("openSurveyBtn");
+  // const openBtn = document.getElementById("openSurveyBtn"); <-- REMOVED
   const closeBtn = document.querySelector(".close-button");
-
-  // --- START DEBUGGING ADDITION ---
-  if (!openBtn) {
-    console.error("ERROR: Could not find 'openSurveyBtn' element.");
-    // Optional: Visually indicate error by changing the button text
-    // if a button *exists* but the script didn't find it for some reason.
-    // If you don't see this in the console, the script file may not be loading.
-  } else {
-    console.log("'openSurveyBtn' successfully found.");
-  }
-  // --- END DEBUGGING ADDITION ---
 
   const formSteps = Array.from(document.querySelectorAll(".form-step"));
   const nextBtns = document.querySelectorAll(".next-btn");
@@ -23,19 +12,13 @@ document.addEventListener("DOMContentLoaded", function () {
   let currentStep = 0;
 
   // --- Modal Functions ---
-  function showModal() {
-    modal.classList.add("show");
-  }
+  // The showModal function is removed as the modal is open by default.
 
   function hideModal() {
     modal.classList.remove("show");
   }
 
-  // Check if openBtn was found before adding the listener
-  if (openBtn) { 
-      openBtn.addEventListener("click", showModal);
-  }
-  
+  // openBtn.addEventListener("click", showModal); <-- REMOVED
   closeBtn.addEventListener("click", hideModal);
   modal.addEventListener("click", function (e) {
     if (e.target === modal) {
